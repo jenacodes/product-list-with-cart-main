@@ -196,8 +196,6 @@ const addToCartHtml = () => {
 const removeItemsFromCart = (productId) => {
     carts = carts.filter(item => item.product.id !== productId);
     addToCartHtml();
-
-
     const productElement = document.querySelector(`.full-grid[data-id="${productId}"]`);
     if (productElement) {
         toggleButtonVisibility(productElement, false); // Reset button state for this product
@@ -355,17 +353,6 @@ const updateCartTotal = () => {
 const checkCartState = () => {
     fullCart.style.display = carts.length > 0 ? 'block' : 'none';
     emptyCart.style.display = carts.length === 0 ? 'block' : 'none';
-};
-
-const reflectCartState = () => {
-    carts.forEach(cartItem => {
-        const productElement = document.querySelector(`.full-grid[data-id="${cartItem.product.id}"]`);
-        if (productElement) {
-            toggleButtonVisibility(productElement, true); // Show quantity controls
-            const itemQuantityElement = productElement.querySelector('.item-quantity');
-            itemQuantityElement.textContent = cartItem.quantity; // Set the correct quantity
-        };
-    });
 };
 
 

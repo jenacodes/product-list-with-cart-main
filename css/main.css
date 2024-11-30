@@ -481,7 +481,7 @@ strong {
 .confirm-btn:hover,
 .confirm-btn:active,
 .confirm-btn:focus {
-    background-color: var(--Rose400);
+    background-color: var(--Rose500);
 }
 
 .modal-container {
@@ -591,5 +591,5 @@ strong {
 .new-order-button:hover,
 .new-order-button:active,
 .new-order-button:focus {
-    background-color: var(--Rose400);
+    background-color: var(--Rose500);
 }
