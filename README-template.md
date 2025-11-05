@@ -1,86 +1,195 @@
-# Frontend Mentor - Product list with cart solution
+# Product list with cart — Frontend Mentor solution
 
-This is a solution to the [Product list with cart challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+A clean, responsive product list with a client-side cart built for the Frontend Mentor "Product list with cart" challenge.
+
+This repository is a lightweight HTML/CSS/JavaScript solution that uses a local `data.json` as the product source and implements add/remove, quantity controls, a confirmation modal, and a "Start New Order" reset flow.
 
 ## Table of contents
 
+- [Demo / Screenshot](#demo--screenshot)
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
+- [Features](#features)
+- [Built with](#built-with)
+- [Data format](#data-format)
+- [Getting started](#getting-started)
+- [Usage](#usage)
+- [Customizing the product data](#customizing-the-product-data)
+- [Accessibility & testing notes](#accessibility--testing-notes)
+- [Contributing](#contributing)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
+- [License](#license)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+## Demo / Screenshot
+
+If you want to preview quickly, open `index.html` in a browser or run a simple local server (instructions below).
+
+This is a project screenshot to `./screenshot.png`
+
+![](./screenshot.png)
 
 ## Overview
 
-### The challenge
+This project solves the Frontend Mentor challenge by providing a responsive product listing and a cart UI. Product data is loaded from `data.json`, each product includes responsive images, a name, category, id, and price.
 
-Users should be able to:
+The app is intentionally simple and framework-free so it can be used as a learning example or a small UI component to embed in other projects.
 
-- Add items to the cart and remove them
-- Increase/decrease the number of items in the cart
-- See an order confirmation modal when they click "Confirm Order"
-- Reset their selections when they click "Start New Order"
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
+## Features
 
-### Screenshot
+- Add items to the cart
+- Increment/decrement quantity per product
+- Remove items from the cart
+- Order confirmation modal when clicking "Confirm Order"
+- "Start New Order" button resets cart and selections
+- Responsive layout and responsive images (mobile/tablet/desktop)
+- Keyboard and focus states for interactive elements
 
-![](./screenshot.jpg)
+## Built with
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+- HTML5
+- CSS (flexbox, grid, custom properties)
+- JavaScript (ES6 modules / DOM APIs)
+- Static JSON data (`data.json`) for products
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+No build step or external dependencies are required — just open the files in a browser.
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+## Data format
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+Product data is stored in `data.json` at project root. Each product uses this shape:
 
-### Links
+```json
+{
+  "image": {
+    "thumbnail": "./assets/images/...",
+    "mobile": "./assets/images/...",
+    "tablet": "./assets/images/...",
+    "desktop": "./assets/images/..."
+  },
+  "id": 1,
+  "name": "Waffle with Berries",
+  "category": "Waffle",
+  "price": 6.5
+}
+```
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- `image` contains paths for responsive images (thumbnail, mobile, tablet, desktop)
+- `id` is a unique numeric identifier used by the cart
+- `name` and `category` are display strings
+- `price` is a number (currency shown in the UI)
 
-## My process
+When you edit or add products, ensure image paths and unique `id` values are correct.
 
-### Built with
+## Getting started
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+Requirements: a modern browser. Optional: Python or Node.js if you want a local HTTP server.
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+1.  Clone the repo or download the ZIP
+
+```powershell
+git clone https://github.com/kingjenathe7th/product-list-with-cart-main.git
+cd product-list-with-cart-main
+```
+
+2a. Open directly (simplest)
+
+Open `index.html` in your browser (double-click or File → Open).
+
+2b. Or run a quick local server (recommended for consistent behavior)
+
+Using Python 3 (PowerShell):
+
+```powershell
+python -m http.server 8000
+# then open http://localhost:8000 in your browser
+```
+
+Using Node.js http-server (if Node is installed):
+
+```powershell
+npx http-server -c-1
+# then open the provided local URL
+```
+
+## Usage
+
+- Browse products and click the "Add to cart" button (or equivalent control) to add an item.
+- Use the + / − controls in the cart to change quantities.
+- Remove an item by clicking the trash/remove button in the cart.
+- Click "Confirm Order" to show a confirmation modal.
+- Click "Start New Order" to clear the cart and reset selections.
+
+The implementation stores cart state in JavaScript runtime (no persistence). If you'd like persistence, consider adding localStorage support.
+
+## Customizing the product data
+
+- Edit `data.json` to add, remove, or change products. Maintain the same fields (`image`, `id`, `name`, `category`, `price`).
+- Put image assets under `assets/images/` and update paths in `data.json`.
+
+Example: add a new product object to the JSON array with a new `id` and image entries.
+
+## Accessibility & testing notes
+
+- Interactive elements include visible focus styles and ARIA-friendly semantics where applicable.
+- Test keyboard navigation (Tab / Enter / Space) and screen-reader labels if you plan to expand the app.
+
+## Contributing
+
+Small improvements are welcome. Typical contributions:
+
+1.  Fork the repo
+2.  Create a feature branch
+3.  Open a pull request describing your changes
+
+If you add a larger feature (persistence, user accounts, payments), open an issue first so we can discuss the approach.
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I learnt Operating on the DOM with javascript.I also learnt how to work with JSON files.
 
 To see how you can add code snippets, see below:
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+
 ```
+
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  opacity: 0;
+  pointer-events: none;
 }
 ```
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+const initApp = () => {
+  //get data from the json
+  fetch("./data.json")
+    .then((response) => response.json())
+    .then((data) => {
+      productsData = data.reduce((acc, product) => {
+        acc[product.id] = product;
+        return acc;
+      }, {});
+      console.log(productsData);
+      addDataToHTML();
+
+      if (localStorage.getItem("cart")) {
+        carts = JSON.parse(localStorage.getItem("cart"));
+        addToCartHtml();
+        reflectCartState();
+      }
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+};
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
@@ -89,7 +198,7 @@ If you want more help with writing markdown, we'd recommend checking out [The Ma
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+I will Dive deep into JS and check out OOP.
 
 **Note: Delete this note and the content within this section and replace with your own plans for continued development.**
 
@@ -102,14 +211,5 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [Jenakumo Emmanuel](https://jenacodes.vercel.app)
+- Twitter - [@kingjenathe7th](https://www.twitter.com/kingjenathe7th)
